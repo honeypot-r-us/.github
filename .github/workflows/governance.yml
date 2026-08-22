@@ -1,0 +1,27 @@
+name: governance
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+      - name: Validate project context
+        run: ruby -e 'require "yaml"; data = YAML.load_file("project-context.yaml"); abort "repository count" unless data.fetch("repositories").length == 11'
+      - name: Require equivalent Codex and Claude policy
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          codex = Path('.openai/AGENTS.md').read_text().replace('Codex project', 'agent project')
+          claude = Path('.claude/CLAUDE.md').read_text().replace('Claude project', 'agent project')
+          if codex != claude:
+              raise SystemExit('Codex and Claude project policies have drifted')
+          PY

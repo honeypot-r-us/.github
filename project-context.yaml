@@ -1,0 +1,28 @@
+schema_version: 1
+project: honeypot-r-us
+production_org: honeypot-r-us
+test_org: honeypot-r-us-test
+linear:
+  project_id: 135ffe93-e89c-4309-94d0-d7839e16c84a
+  project_url: https://linear.app/denman/project/githubcomhoneypot-r-us-972fb8b3c0fc
+  architecture_url: https://linear.app/denman/document/honeypot-r-us-ecosystem-architecture-4b83f9e98375
+slack:
+  production_channel_id: C0BRVAGPR7D
+  production_url: https://oresoftware-workspace.slack.com/archives/C0BRVAGPR7D
+  test_channel_id: C0BS3FR7B17
+  test_url: https://oresoftware-workspace.slack.com/archives/C0BS3FR7B17
+agents:
+  codex: .openai/AGENTS.md
+  claude: .claude/CLAUDE.md
+repositories:
+  - hnpt-web-server.rs
+  - hnpt-daemon.rs
+  - hnpt-api-server.rs
+  - hnpt-infra
+  - hnpt-clients
+  - hnpt-cli
+  - hnpt-flutter
+  - hnpt-desktop-app.rs
+  - hnpt-sync
+  - hnpt-interfaces
+  - hnpt-lib-core
