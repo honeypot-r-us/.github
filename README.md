@@ -15,3 +15,7 @@ The `.openai/AGENTS.md` and `.claude/CLAUDE.md` files are intentionally
 symmetrical. They define equivalent Codex and Claude project context instead of
 letting the two agent environments drift into different architectural or
 security policies.
+
+## Rust-first testing policy
+
+See [TESTING.md](TESTING.md): use **Rust, not Python**, for new repository CI/test scripts, contract assertions, mutation testing and code-generation gates. Migrate touched Python test tools to Rust while retaining the shipped Python SDK language target. Both `.openai/AGENTS.md` and `.claude/CLAUDE.md` enforce the same rules.
